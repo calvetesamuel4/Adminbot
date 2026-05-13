@@ -10,6 +10,8 @@
         .payment-list { margin-top: 20px; }
         .payment-item { display: flex; justify-content: space-between; padding: 15px; border-bottom: 1px solid var(--border-color); }
         .amount { font-weight: 700; color: var(--accent-color); }
+        /* Estilo para el botón de acción */
+        .btn-pay { cursor: pointer; padding: 4px 8px; font-size: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color); background: white; }
     </style>
 </head>
 <body>
@@ -29,13 +31,14 @@
             <header class="top-header"><h1>Gestión de Pagos</h1></header>
             <main class="content-body">
                 <div class="payment-summary">
-                    <div class="card"><h3>Recaudado Mes</h3><p class="stat-value">$4.5M</p></div>
-                    <div class="card"><h3>Pendiente</h3><p class="stat-value" style="color: var(--warning-color)">$1.2M</p></div>
+                    <div class="card"><h3>Recaudado Mes</h3><p class="stat-value" id="recaudado-val">$4.5M</p></div>
+                    <div class="card"><h3>Pendiente</h3><p class="stat-value" id="pendiente-val" style="color: var(--warning-color)">$1.2M</p></div>
                     <div class="card"><h3>Mora</h3><p class="stat-value" style="color: var(--danger-color)">$300k</p></div>
                 </div>
                 <div class="card">
                     <h3>Historial Reciente</h3>
-                    <div class="payment-list">
+                    <div class="payment-list" id="payment-list">
+                        <!-- Las líneas originales se mantienen como base, pero el script las actualizará -->
                         <div class="payment-item">
                             <div><strong>Juan Pérez</strong><br><small>Mensualidad Abril</small></div>
                             <div class="amount">$150.000</div>
@@ -49,5 +52,6 @@
             </main>
         </div>
     </div>
+    <script src="payments.js"></script>
 </body>
 </html>
