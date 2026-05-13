@@ -1,54 +1,122 @@
-# AdminBot: Gestión de Asistencia y Pagos
+# AdminBot
 
-Solución para centros educativos que centraliza asistencia, cobros y pagos de estudiantes, con notificaciones a acudientes vía WhatsApp. Backend en Node.js/Express con arquitectura MVC y MySQL.
+AdminBot es una plataforma de gestión académica desarrollada para optimizar la administración escolar mediante un sistema moderno, rápido y escalable. El proyecto utiliza Node.js + Express en el backend y Vite con JavaScript Vanilla en el frontend.
+
+## Estructura del proyecto
+
+* `Backend/` → servidor principal, API REST, autenticación JWT, conexión con MySQL e integración de WhatsApp.
+* `Frontend/` → interfaz administrativa del sistema: dashboard, estudiantes, acudientes, pagos y autenticación.
+
+---
+
+## Requisitos
+
+Para ejecutar el proyecto necesitas:
+
+* Node.js v18 o superior
+* MySQL instalado y configurado
+* npm
+
+---
+
+## Configuración del backend
+
+1. Configura el archivo `.env` con tus credenciales y tokens.
+
+Debes completar:
+
+* conexión MySQL
+* JWT_SECRET
+* configuración de WhatsApp
+
+2. Importa la base de datos usando:
+
+```sql id="8g4n2n"
+Backend/database.sql
+```
+
+3. Si deseas cargar información de prueba puedes usar:
+
+```bash id="r8y2rj"
+Backend/src/seed/seed.js
+```
+
+---
+
+## Ejecutar el backend
+
+```bash id="6ps2l7"
+cd Backend
+npm install
+npm run start
+```
+
+El servidor iniciará en:
+
+```bash id="lm52fo"
+http://localhost:3000
+```
+
+---
+
+## Configuración del frontend
+
+```bash id="mu47kg"
+cd Frontend
+npm install
+npm run dev
+```
+
+Abre la URL proporcionada por Vite para acceder al sistema.
+
+---
+
+## Acceso al sistema
+
+Credenciales de prueba disponibles:
+
+```txt id="q6q6n6"
+admin@adminbot.com / 123456
+```
+
+```txt id="ljaz9j"
+soporte@adminbot.com / admin123
+```
+
+---
+
+## Variables de entorno
+
+Ejemplo:
+
+```env id="qnb6d9"
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+DB_PORT=
+JWT_SECRET=
+PHONE_ID=
+WHATSAPP_TOKEN=
+```
+
+---
 
 ## Características
 
-- Registro de asistencias y estados diarios.
-- Gestión de cuentas por cobrar y pagos.
-- Notificaciones automáticas a acudientes.
-- API REST modular por entidad.
+* Gestión de estudiantes
+* Administración de acudientes
+* Control de pagos
+* Sistema de autenticación
+* Integración con WhatsApp
+* Panel administrativo interactivo
+* Arquitectura modular y escalable
 
-## Arquitectura y Stack
+---
 
-- Node.js (ES Modules), Express 5, mysql2 (pool), cors, nodemon.
-- Patrón MVC por entidad: models, controllers, routes separados.
-- Base de datos MySQL compatible con el esquema suministrado.
+## Notas
 
-## Estructura del Proyecto
-
-- Configuración: Backend/config/db.js.
-- Modelos: estudiantes, usuarios, acudientes, pagos, asistencias, notificaciones.
-- Controladores: lógica HTTP por entidad.
-- Rutas: endpoints REST por entidad.
-- Entrada: Backend/app.js.
-
-## Configuración Rápida
-
-- Requisitos: Node.js 18+ y un servidor MySQL.
-- Instalación: en carpeta Backend ejecutar npm install.
-- Conexión: completar credenciales en Backend/config/db.js (host, user, password, database).
-- Base de datos: crear tablas según el esquema SQL del proyecto.
-- Arranque: en Backend ejecutar npm run dev.
-
-## Endpoints Principales
-
-- Base: /api
-- Estudiantes: GET/POST /student.
-- Usuarios: GET/POST /usuario.
-- Acudientes: GET/POST /acudiente.
-- Pagos: GET/POST /pago.
-- Asistencias: GET/POST /asistencia.
-- Notificaciones: GET/POST /notificacion.
-
-## Buenas Prácticas
-
-- Validar entrada y estados antes de insertar.
-- Manejo uniforme de errores y respuestas.
-- Transacciones para operaciones financieras.
-- Timestamps consistentes y auditables.
-
-## Estado
-
-- db.js requiere credenciales reales de MySQL.
-- app.js debe montar middlewares y rutas para exponer la API.
+* Los archivos `.env` se encuentran protegidos mediante `.gitignore`.
+* La integración de WhatsApp requiere credenciales válidas de Meta.
+* El módulo de asistencia está preparado para futuras implementaciones CRUD.
+* Proyecto diseñado para facilitar procesos administrativos en instituciones educativas.
